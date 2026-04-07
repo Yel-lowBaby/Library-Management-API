@@ -107,7 +107,7 @@
                 "69c66a6262f958a84e15afe3"
               ]
             },
-            "description": "Gets an author in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Gets an author in the library database\n\n- Requires Author ID to be specified in the url"
           },
           "response": []
         },
@@ -138,7 +138,7 @@
                 "69c66a6262f958a84e15afe3"
               ]
             },
-            "description": "Updates details of an author in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Updates details of an author in the library database\n\n- Requires author ID to be specified in the url"
           },
           "response": []
         },
@@ -169,7 +169,7 @@
                 "69c9afd2288567ea3ea9c89c"
               ]
             },
-            "description": "Deletes the record of an author in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Deletes the record of an author in the library database\n\n- Requires author ID to be specified in the url"
           },
           "response": []
         }
@@ -273,7 +273,7 @@
                 "69c694adf7e84ac249fbbfec"
               ]
             },
-            "description": "Gets a student in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Gets a student in the library database\n\n- Requires student ID to be specified in the url"
           },
           "response": []
         }
@@ -332,7 +332,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/books/",
+              "raw": "http://localhost:5000/api/books?search=jewel",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -340,8 +340,13 @@
               "port": "5000",
               "path": [
                 "api",
-                "books",
-                ""
+                "books"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "jewel"
+                }
               ]
             },
             "description": "Gets all the books in the library database"
@@ -381,7 +386,7 @@
                 "69c9429f45a13615674fb9c1"
               ]
             },
-            "description": "Gets a book in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Gets a book in the library database\n\n- Requires book ID to be specified in the url"
           },
           "response": []
         },
@@ -412,7 +417,7 @@
                 "69c9429f45a13615674fb9c1"
               ]
             },
-            "description": "Updates details of a book in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Updates details of a book in the library database\n\n- Requires book ID to be specified in the url"
           },
           "response": []
         },
@@ -443,7 +448,7 @@
                 "69c9c68f79086f5cf960b840"
               ]
             },
-            "description": "Deletes the record of a book in the library database\n\n- Requires ID to be specified in the url"
+            "description": "Deletes the record of a book in the library database\n\n- Requires book ID to be specified in the url"
           },
           "response": []
         }
@@ -555,7 +560,7 @@
                 "borrow"
               ]
             },
-            "description": "Borrows a book from the library database\n\n- Books must be available (IN)\n    \n- Requires student ID and attendant ID\n    \n- Updates book status to OUT"
+            "description": "Borrows a book from the library database\n\n- Books must be available (IN)\n    \n- Requires student ID and attendant ID\n    \n- Requires book ID to be specified in the url\n    \n- Updates book status to OUT"
           },
           "response": []
         },
@@ -579,6 +584,28 @@
               ]
             },
             "description": "Returns a borrowed book to the library database\n\n- Book must be OUT\n    \n- Resets borrowedBy, issueBy and returnDate to null"
+          },
+          "response": []
+        },
+        {
+          "name": "Overdue Book",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books/overdue",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "overdue"
+              ]
+            },
+            "description": "Gets all books that are due for return to the library"
           },
           "response": []
         }

@@ -223,3 +223,32 @@ exports.returnBook = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+exports.overdueBooks = async (req, res) => {
+    try {
+        const books = await Book.find({ status: "OUT" });
+
+        const today = new Date();
+
+        const overdueBooks = books.filter(book => {
+            return book.returnDate && new Date(book.returnDate) < today;
+        });
+
+        if (overdueBooks.length === 0) {
+            return res.status(200).json({
+                message: "No overdue books",
+                data: []
+            });
+        }
+
+        return res.status(200).json({
+            message: "Overdue books retrieved successfully",
+            data: overdueBooks
+        });
+
+    } catch(error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+};

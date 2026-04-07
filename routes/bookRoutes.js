@@ -4,15 +4,18 @@ const router = express.Router();
 const {
     createBook,
     getBooks,
+    overdueBooks,
     getBook,
     updateBook,
     deleteBook,
     borrowBook,
     returnBook
+    
 } = require('../controllers/bookController');
 
 router.post('/books', createBook);
 router.get('/books', getBooks);
+router.get("/books/overdue", overdueBooks);
 router.get('/books/:id', getBook);
 router.put('/books/:id', updateBook);
 router.delete('/books/:id', deleteBook);
