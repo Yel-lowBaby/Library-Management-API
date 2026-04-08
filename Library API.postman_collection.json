@@ -1,0 +1,645 @@
+{
+  "info": {
+    "_postman_id": "ff34416f-2c3d-4e77-a1a5-cf7385025cfc",
+    "name": "Library API",
+    "description": "This API manages a school library system\n\nFeatures:\n\n- Author management\n    \n- Book management\n    \n- Student and attendant records\n    \n- Borrowing and returning books",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52437339",
+    "_collection_link": "https://go.postman.co/collection/52437339-ff34416f-2c3d-4e77-a1a5-cf7385025cfc?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authors End-points",
+      "item": [
+        {
+          "name": "Create Author",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Wole Soyinka\",\r\n    \"bio\": \"Nigerian writer\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors"
+              ]
+            },
+            "description": "Creates a new author in the library database\n\n- Requires name and bio"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Authors",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors"
+              ]
+            },
+            "description": "Gets all the authors in the library database"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Author by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors/69c66a6262f958a84e15afe3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors",
+                "69c66a6262f958a84e15afe3"
+              ]
+            },
+            "description": "Gets an author in the library database\n\n- Requires Author ID to be specified in the url"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Author by ID",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Wole Soyinka\",\r\n    \"bio\": \"Nigerian writer\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors/69c66a6262f958a84e15afe3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors",
+                "69c66a6262f958a84e15afe3"
+              ]
+            },
+            "description": "Updates details of an author in the library database\n\n- Requires author ID to be specified in the url"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Author by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors/69c9afd2288567ea3ea9c89c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors",
+                "69c9afd2288567ea3ea9c89c"
+              ]
+            },
+            "description": "Deletes the record of an author in the library database\n\n- Requires author ID to be specified in the url"
+          },
+          "response": []
+        }
+      ],
+      "description": "Handles all author-related operations including CRUD"
+    },
+    {
+      "name": "Students End-points",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"John Jane\",\r\n    \"email\": \"johnjane@mail.com\",\r\n    \"studentId\": \"STU003\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "students"
+              ]
+            },
+            "description": "Creates a new student in the library database\n\n- Requires name, email and student ID\n    \n- Email and student ID must be unique"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Students",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/students/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "students",
+                ""
+              ]
+            },
+            "description": "Gets all the students in the library database"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Student by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/students/69c694adf7e84ac249fbbfec",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "students",
+                "69c694adf7e84ac249fbbfec"
+              ]
+            },
+            "description": "Gets a student in the library database\n\n- Requires student ID to be specified in the url"
+          },
+          "response": []
+        }
+      ],
+      "description": "Handles all student-related operations including creating and reading"
+    },
+    {
+      "name": "Books End-points",
+      "item": [
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"The Lion and the Jewel\",\r\n    \"isbn\": \"173456\",\r\n    \"authors\": [ \"69c9c70579086f5cf960b843\" ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                ""
+              ]
+            },
+            "description": "Creates a new book in the library database\n\n- Requires title, isbn and authors\n    \n- Isbn must be unique\n    \n- Authors must be an array of author IDs\n    \n- Authors must be valid IDs"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Books",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books?search=jewel",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "jewel"
+                }
+              ]
+            },
+            "description": "Gets all the books in the library database"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Book by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/69c9429f45a13615674fb9c1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "69c9429f45a13615674fb9c1"
+              ]
+            },
+            "description": "Gets a book in the library database\n\n- Requires book ID to be specified in the url"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Book by ID",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"The Lion and the Jewel\",\r\n    \"isbn\": \"173456\",\r\n    \"authors\": [ \"69c9afd2288567ea3ea9c89c\" ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/69c9429f45a13615674fb9c1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "69c9429f45a13615674fb9c1"
+              ]
+            },
+            "description": "Updates details of a book in the library database\n\n- Requires book ID to be specified in the url"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Book by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/69c9c68f79086f5cf960b840",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "69c9c68f79086f5cf960b840"
+              ]
+            },
+            "description": "Deletes the record of a book in the library database\n\n- Requires book ID to be specified in the url"
+          },
+          "response": []
+        }
+      ],
+      "description": "Handles all book-related operations including CRUD"
+    },
+    {
+      "name": "Attendants End-points",
+      "item": [
+        {
+          "name": "Register attendants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Admin 3\",\r\n    \"staffId\": \"STAFF006\",\r\n    \"email\": \"admin3@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "register"
+              ]
+            },
+            "description": "Registers new library attendants to the database\n\n- Requires name, staffId, email and password\n    \n- It attaches attendant as role by default"
+          },
+          "response": []
+        },
+        {
+          "name": "Login attendants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin1@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "login"
+              ]
+            },
+            "description": "Logs attendants into the library management system\n\n- Requires email and password\n    \n- Generates token to authenticate attendants"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Attendants",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/attendants/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "attendants",
+                ""
+              ]
+            },
+            "description": "Gets all the attendants in the library database"
+          },
+          "response": []
+        }
+      ],
+      "description": "Handles all attendant-related operations including registering, logging in and getting all attendants in the library database"
+    },
+    {
+      "name": "Borrow & Return Book",
+      "item": [
+        {
+          "name": "Borrow Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"studentId\": \"69c694adf7e84ac249fbbfec\",\r\n    \"attendantId\": \"69c9c99279086f5cf960b84f\",\r\n    \"returnDate\": \"2026-04-04\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/69c9429f45a13615674fb9c1/borrow",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "69c9429f45a13615674fb9c1",
+                "borrow"
+              ]
+            },
+            "description": "Borrows a book from the library database\n\n- Books must be available (IN)\n    \n- Requires student ID and attendant ID\n    \n- Requires book ID to be specified in the url\n    \n- Updates book status to OUT"
+          },
+          "response": []
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books/69c9429f45a13615674fb9c1/return",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "69c9429f45a13615674fb9c1",
+                "return"
+              ]
+            },
+            "description": "Returns a borrowed book to the library database\n\n- Book must be OUT\n    \n- Resets borrowedBy, issueBy and returnDate to null"
+          },
+          "response": []
+        },
+        {
+          "name": "Overdue Book",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books/overdue",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "overdue"
+              ]
+            },
+            "description": "Gets all books that are due for return to the library"
+          },
+          "response": []
+        }
+      ],
+      "description": "Handles borrowing amd returning of books in the library"
+    }
+  ]
+}
