@@ -459,13 +459,13 @@
       "name": "Attendants End-points",
       "item": [
         {
-          "name": "Create Attendant",
+          "name": "Register attendants",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Mr Attendant 2\",\r\n    \"staffId\": \"STAFF003\"\r\n}",
+              "raw": "{\r\n    \"name\": \"Admin 3\",\r\n    \"staffId\": \"STAFF006\",\r\n    \"email\": \"admin3@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -473,7 +473,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/attendants/",
+              "raw": "http://localhost:5000/api/register",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -481,11 +481,40 @@
               "port": "5000",
               "path": [
                 "api",
-                "attendants",
-                ""
+                "register"
               ]
             },
-            "description": "Creates a new attendant in the library database\n\n- Requires name and staff ID\n    \n- Staff ID must be unique"
+            "description": "Registers new library attendants to the database\n\n- Requires name, staffId, email and password\n    \n- It attaches attendant as role by default"
+          },
+          "response": []
+        },
+        {
+          "name": "Login attendants",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin1@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "login"
+              ]
+            },
+            "description": "Logs attendants into the library management system\n\n- Requires email and password\n    \n- Generates token to authenticate attendants"
           },
           "response": []
         },
@@ -527,7 +556,7 @@
           "response": []
         }
       ],
-      "description": "Handles all attendant-related operations including creating and reading"
+      "description": "Handles all attendant-related operations including registering, logging in and getting all attendants in the library database"
     },
     {
       "name": "Borrow & Return Book",

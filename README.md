@@ -1,72 +1,138 @@
-📚 School Library Management API
-🚀 Overview
+📚 Library Management System API
 
-This is a RESTful API for managing a school library system.
-It allows management of authors, books, students, library attendants, and book borrowing/returns.
+A robust backend API for managing a library system, built with Node.js, Express, and MongoDB. This system supports book management, student records, attendants, borrowing logic, authentication, and overdue tracking.
 
-🛠 Tech Stack
-Node.js
-Express.js
-MongoDB (Mongoose)
+⸻
+
+🚀 Features
+
+📖 Book Management
+	•	Add new books (Protected)
+	•	Fetch all books
+	•	Fetch single book by ID
+	•	Track book availability (IN / OUT)
+
+👨‍🎓 Student Management
+	•	Add students (Protected)
+	•	Fetch student records
+
+✍️ Author Management
+	•	Add authors (Protected)
+	•	Manage author data
+
+🔄 Borrowing System
+	•	Borrow books
+	•	Assign:
+	•	Student
+	•	Attendant
+	•	Return date
+	•	Prevent borrowing already borrowed books
+
+⏰ Overdue Detection
+	•	Dedicated endpoint to fetch overdue books
+	•	Logic:
+	•	Book must be OUT
+	•	returnDate must be earlier than current date
+
+🔐 Authentication (JWT)
+	•	Attendant registration with hashed passwords
+	•	Attendant login with JWT token
+	•	Secure authentication using:
+	•	bcryptjs
+	•	jsonwebtoken
+
+🛡️ Authorization
+	•	Protected routes using middleware
+	•	Only authenticated attendants can:
+	•	Add books
+	•	Add students
+	•	Add authors
+
+🧱 Role-Based Access Control
+	•	Attendants assigned roles
+	•	Middleware ensures only authorized roles access specific routes
+
+🛠️ Tech Stack
+	•	Node.js
+	•	Express.js
+	•	MongoDB
+	•	Mongoose
+	•	bcryptjs
+	•	jsonwebtoken
+
 📁 Project Structure
-/models
-/controllers
-/routes
-/config
-server.js
-⚙️ Setup Instructions
-Clone the repository
-git clone <your-repo-link>
-Install dependencies
+project/
+├── controllers/
+│   ├── authController.js
+│   ├── bookController.js
+│   ├── studentController.js
+│   ├── authorController.js
+│   └── overdueController.js
+│
+├── models/
+│   ├── bookModel.js
+│   ├── studentModel.js
+│   ├── authorModel.js
+│   └── attendantModel.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── bookRoutes.js
+│   ├── studentRoutes.js
+│   └── authorRoutes.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   └── roleMiddleware.js
+│
+├── server.js
+└── package.json
+
+🔐 Authentication Endpoints
+
+Register Attendant
+POST /api/register
+
+Login Attendant
+POST /api/login
+
+📚 Book Endpoints
+
+Get All Books
+GET /books
+
+Get Single Book
+GET /books/:id
+
+Add Book (Protected)
+POST /books
+Authorization: Bearer <token>
+
+🔄 Borrow Book
+POST /books/:id/borrow
+
+⏰ Overdue Books
+GET /books/overdue
+
+🛡️ Protected Routes
+Authorization: Bearer <JWT Token>
+
+⚙️ Installation
+git clone (https://github.com/Yel-lowBaby/Library-Management-API)
+cd project
 npm install
-Create a .env file and add:
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-Start the server
 npm run dev
-📌 API ENDPOINTS
-👤 Authors
-POST /api/authors
-GET /api/authors
-GET /api/authors/
-PUT /api/authors/
-DELETE /api/authors/
-📚 Books
-POST /api/books
-GET /api/books
-GET /api/books/
-PUT /api/books/
-DELETE /api/books/
-🎓 Students
-POST /api/students
-GET /api/students
-GET /api/students/
-🧑‍💼 Attendants
-POST /api/attendants
-GET /api/attendants
-📤 Borrow Book
 
-POST /api/books//borrow
+🗝️Key Features
+	•	Pagination to get books
+    •	Search by title or author
+	•	Overdue books check 
+	•	Validation using middleware 
+	•	No duplicate ISBN
 
-Body:
-{
-"studentId": "xxx",
-"attendantId": "xxx",
-"returnDate": "YYYY-MM-DD"
-}
+💡 Future Improvements
+	•	Student authentication system
 
-🔁 Return Book
-
-POST /api/books//return
-
-⚡ Special Features
-Book status tracking (IN / OUT)
-Author relationships
-Borrowing system with validation
-Automatic population of:
-Authors
-Student
-Attendant
 👨‍💻 Author
 
-Olayinka Adedapo Abioye
+Built by Olayinka Adedapo Abioye

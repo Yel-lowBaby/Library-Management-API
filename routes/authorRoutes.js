@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { protect } = require("../middleware/authMiddleware");
+const { allowRoles } = require("../middleware/roleMiddleware");
 
 const {
     createAuthor,
@@ -9,10 +11,10 @@ const {
     deleteAuthor
 } = require('../controllers/authorController');
 
-router.post('/authors', createAuthor);
-router.get('/authors', getAuthors);
-router.get('/authors/:id', getAuthor);
-router.put('/authors/:id', updateAuthor);
-router.delete('/authors/:id', deleteAuthor);
+router.post('/authors', protect, allowRoles("attendant"), createAuthor);
+router.get('/authors', protect, allowRoles("attendant"), getAuthors);
+router.get('/authors/:id', protect, allowRoles("attendant"), getAuthor);
+router.put('/authors/:id', protect, allowRoles("attendant"), updateAuthor);
+router.delete('/authors/:id', protect, allowRoles("attendant"), deleteAuthor);
 
 module.exports = router;

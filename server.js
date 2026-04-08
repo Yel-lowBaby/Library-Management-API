@@ -13,11 +13,13 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.log(err));
 
+const authRoutes = require('./routes/authRoutes');
 const authorRoutes = require('./routes/authorRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const attendantRoutes = require('./routes/attendantRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 
+app.use('/api', authRoutes);
 app.use('/api', authorRoutes);
 app.use('/api', studentRoutes);
 app.use('/api', attendantRoutes);

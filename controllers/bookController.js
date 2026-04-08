@@ -31,7 +31,7 @@ exports.createBook = async (req, res) => {
         await book.save();
 
         return res.status(201).json({
-            success: true, 
+            message: "Book created succesfully", 
             data: book
         });
 

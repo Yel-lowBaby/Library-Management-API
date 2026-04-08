@@ -8,6 +8,20 @@ const attendantSchema = new mongoose.Schema({
     staffId: {
         type: String,
         unique: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        enum: ["attendant"],
+        default: "attendant"
     }
 }, {
     timestamps: true
