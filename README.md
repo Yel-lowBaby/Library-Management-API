@@ -59,9 +59,14 @@ A robust backend API for managing a library system, built with Node.js, Express,
 	•	Mongoose
 	•	bcryptjs
 	•	jsonwebtoken
+	•	dotenv
 
 📁 Project Structure
-project/
+library-api/
+│
+├── config/
+│   └── db.js
+│
 ├── controllers/
 │   ├── authController.js
 │   ├── bookController.js
@@ -85,10 +90,39 @@ project/
 │   ├── authMiddleware.js
 │   └── roleMiddleware.js
 │
+├── .env
+├── .gitignore
 ├── server.js
-└── package.json
+├── package.json
+└── README.md
 
-🔐 Authentication Endpoints
+⚙️ Installation & Setup
+
+1️⃣ Clone the repository
+git clone https://github.com/Yel-lowBaby/Library-Management-API.git
+cd notes-api
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Create .env file
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/notesDB
+JWT_SECRET=your_secret_key
+
+4️⃣ Run the server
+npm run dev
+
+🔐 Authentication
+
+All protected routes require a Bearer token.
+
+Header format:
+Authorization: Bearer YOUR_TOKEN
+
+📬 API Endpoints
+
+🔑 Auth Routes
 
 Register Attendant
 POST /api/register
@@ -114,14 +148,14 @@ POST /books/:id/borrow
 ⏰ Overdue Books
 GET /books/overdue
 
-🛡️ Protected Routes
-Authorization: Bearer <JWT Token>
+🔒 Authorization
+	•	Attendants only can modify resources
+	•	Unauthorized actions return a 403 error
 
-⚙️ Installation
-git clone (https://github.com/Yel-lowBaby/Library-Management-API)
-cd project
-npm install
-npm run dev
+⚠️ Important Notes
+	•	Do NOT commit your .env file
+	•	Ensure MongoDB server is running
+	•	Always include Authorization header for protected routes
 
 🗝️Key Features
 	•	Pagination to get books
@@ -134,5 +168,4 @@ npm run dev
 	•	Student authentication system
 
 👨‍💻 Author
-
-Built by Olayinka Adedapo Abioye
+Olayinka Adedapo Abioye

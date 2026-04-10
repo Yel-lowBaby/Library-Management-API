@@ -459,7 +459,7 @@
       "name": "Attendants End-points",
       "item": [
         {
-          "name": "Register attendants",
+          "name": "Register Attendants",
           "request": {
             "method": "POST",
             "header": [],
@@ -489,7 +489,7 @@
           "response": []
         },
         {
-          "name": "Login attendants",
+          "name": "Login Attendants",
           "request": {
             "method": "POST",
             "header": [],

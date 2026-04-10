@@ -59,8 +59,6 @@ exports.getBooks = async (req, res) => {
             .skip(skip)
             .limit(limit);
 
-        console.log("FINAL QUERY USED:", query);
-
         const total = await Book.countDocuments();
         
         return res.status(200).json({
